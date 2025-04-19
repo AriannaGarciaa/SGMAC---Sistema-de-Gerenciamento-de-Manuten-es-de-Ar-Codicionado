@@ -3,8 +3,8 @@
 @section('content')
 <div class="container mx-auto py-12">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Lista de Chamados</h1>
-        <a href="{{ route('chamados.create') }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Cadastrar Novo Chamado</a>
+        <h1 class="text-2xl font-bold">Lista de Chamados Externos</h1>
+        <a href="{{ route('chamados.create') }}" class="bg-green-500 text-white px-4 py-2 rounded">Cadastrar Novo Chamado</a>
     </div>
     
     
@@ -17,19 +17,21 @@
                 <th class="py-2 px-4 border">Nome</th>
                 <th class="py-2 px-4 border">Solução</th>
                 <th class="py-2 px-4 border">Email</th>
+                <th class="py-2 px-4 border">Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($chamados as $chamado)
                 <tr class="border">
                     <td class="py-2 px-4">{{ $chamados->id }}</td>
-                    <td class="py-2 px-4">{{ $chamados->bloco }}</td>
-                    <td class="py-2 px-4">{{ $chamados->sala }}</td>
-                    <td class="py-2 px-4">{{ $chamados->tamanho }}</td>
+                    <td class="py-2 px-4">{{ $chamados->Local }}</td>
+                    <td class="py-2 px-4">{{ $chamados->DescricaoProblema }}</td>
+                    <td class="py-2 px-4">{{ $chamados->NomePessoa }}</td>
+                    <td class="py-2 px-4">{{ $chamados->solucao }}</td>
+                    <td class="py-2 px-4">{{ $chamados->email }}</td>
+                    <td class="py-2 px-4">{{ $chamados->status }}</td>
                     <td class="py-2 px-4">
-                        <span class="px-2 py-1 rounded text-white {{ $chamado->status == 'agendado' ? 'bg-blue-500' : ($chamado->status == 'confirmado' ? 'bg-green-500' : 'bg-gray-500') }}">
-                            {{ ucfirst($chamados->status) }}
-                        </span>
+                        
                     </td>
                     <td class="py-2 px-4 flex space-x-2">
                         <a href="{{ route('chamados.edit', $chamado->id) }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</a>

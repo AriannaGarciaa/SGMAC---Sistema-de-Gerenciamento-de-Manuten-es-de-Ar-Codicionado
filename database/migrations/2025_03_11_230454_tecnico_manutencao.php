@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tecnicos_manutencao', function (Blueprint $table) {
+        Schema::create('tecnico_manutencao', function (Blueprint $table) {
             $table->id();
-            $table->string('nome'); // Nome do técnico
-            $table->string('Empresa')->unique(); // Nome Empresa
-            $table->string('Status')->nullable(); // Telefone opcional
+            $table->string('nome'); 
+            $table->string('Empresa'); 
+            $table->string('Status')->nullable(); 
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tecnicos_manutencao');
+        Schema::dropIfExists('tecnico_manutencao');
     }
 };

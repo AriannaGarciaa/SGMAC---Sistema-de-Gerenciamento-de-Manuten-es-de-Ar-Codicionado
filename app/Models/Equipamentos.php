@@ -22,7 +22,7 @@ class Equipamentos extends Model
 
     public function local()
     {
-        return $this->belongsTo(Local::class, 'Local_id', 'idLocal');
+        return $this->belongsTo(Local::class, 'Local_id', 'id');
     }
 
    

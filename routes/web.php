@@ -4,11 +4,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\EquipamentosController;
 use App\Http\Controllers\ChamadosController;
+use App\Http\Controllers\TecnicoManutencaoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Rotas de chamados externos (acesso público)
+Route::get('/chamadosExternos/create', [ChamadosController::class, 'createExterno'])->name('chamadosExternos.create');
+Route::post('/chamadosExternos', [ChamadosController::class, 'storeExterno'])->name('chamadosExternos.store');
+Route::get('/chamadosExternos', [ChamadosController::class, 'show'])->name('chamadosExternos.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -53,7 +59,7 @@ Route::middleware('auth')->group(function () {
 
     //Rotas para Tecnico em manutenção
     Route::get('/tecnicos', [TecnicoManutencaoController::class, 'index'])->name('tecnicos.index');
-    Route::get('/tecnicos', [TecnicoManutencaoController::class, 'index'])->name('tecnicos.index');
+    
     Route::get('/tecnicos/create', [TecnicoManutencaoController::class, 'create'])->name('tecnicos.create');
     Route::post('/tecnicos', [TecnicoManutencaoController::class, 'store'])->name('tecnicos.store');
     Route::get('/tecnicos/{tecnico}', [TecnicoManutencaoController::class, 'show'])->name('tecnicos.show');

@@ -16,7 +16,7 @@ class Chamados extends Model
         Schema::create('chamados', function (Blueprint $table) {
             $table->id();
             $table->string('Local');
-            $table->string('DescricaoProblma');
+            $table->text('DescricaoProblema');
             $table->string('NomePessoa');
             $table->string('status');
             $table->string('solucao');

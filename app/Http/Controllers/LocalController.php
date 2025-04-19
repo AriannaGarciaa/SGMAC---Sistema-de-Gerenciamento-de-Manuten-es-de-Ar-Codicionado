@@ -58,14 +58,14 @@ class LocalController extends Controller
         $request->validate([
             'bloco' => 'required|string|max:255',
             'sala' => 'required|string|max:255',
-            'tamanhoSala' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
+            'tamanhoSala' => 'nullable|string|max:255',
+            'status' => 'required|string|in:Ativo,Inativo',
         ]);
 
         $local = Local::findOrFail($id);
         $local->update($request->all());
 
-        return redirect()->route('locais.show', $id)->with('success', 'Local atualizado com sucesso!');    }
+        return redirect()->route('locais.index', $local->id)->with('success', 'Local atualizado com sucesso!');    }
 
     // Exclui um local do banco de dados
     public function destroy($id)

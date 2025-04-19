@@ -13,14 +13,14 @@ class EquipamentosController extends Controller
     public function index()
     {
         $equipamentos = Equipamentos::all(); 
-        return view('equipamentos.index', compact('equipamentos'));
+        $local = DB::table('local')->get();
+        return view('equipamentos.index', compact('equipamentos', 'local'));
     }
 
     // Exibe o formulário de criação
     public function create()
     {
         $local = Local::all(); 
-        $local = DB::table('local')->get(); // Busca todos os locais no banco de dados
         return view('equipamentos.create', compact('local'));
     }
 
@@ -43,7 +43,8 @@ class EquipamentosController extends Controller
     public function show($id)
     {
         $equipamento = Equipamentos::findOrFail($id);
-        return view('equipamentos.show', compact('equipamentos'));
+        $local = Local::all(); // Adicionado para evitar erro com variável não definida
+        return view('equipamentos.show', compact('equipamento', 'local'));
     }
 
     // Exibe formulário de edição
@@ -51,7 +52,7 @@ class EquipamentosController extends Controller
     {
         $equipamento = Equipamentos::findOrFail($id);
         $local = DB::table('local')->get(); // Buscar os locais para edição
-        return view('equipamentos.edit', compact('equipamentos', 'local'));
+        return view('equipamentos.edit', compact('equipamento', 'local'));
     }
 
     // Atualiza um equipamento específico
@@ -63,10 +64,10 @@ class EquipamentosController extends Controller
             'anoFabricacao' => 'required|integer',
             'dataInstalacao' => 'required|date',
             'status' => 'required|string|max:255',
-            'Local_idLocal' => 'required|integer',
+            'Local_id' => 'required|integer',
         ]);
 
-        $equipamento = Equipamento::findOrFail($id);
+        $equipamento = Equipamentos::findOrFail($id);
         $equipamento->update($request->all());
 
         return redirect()->route('equipamentos.index')->with('success', 'Equipamento atualizado com sucesso!');

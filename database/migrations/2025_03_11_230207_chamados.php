@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('Local');
             $table->text('DescricaoProblema');
-            $table->String('NomeSolicitante');
-            $table->enum('status', ['aberto', 'em andamento', 'concluido'])->default('aberto');
+            $table->String('NomePessoa');
+            $table->String('status')->default('aberto');
             $table->text('solucao')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TecnicoManutencao extends Model
 {
     use HasFactory;
-
-    protected $table = 'tecnicos_manutencao'; 
+    protected $table = 'tecnico_manutencao'; 
     
   
     protected $fillable = [
@@ -18,8 +17,5 @@ class TecnicoManutencao extends Model
         'status',
     ];
 
-    public function manutencoes()
-    {
-        return $this->hasMany(Manutencao::class, 'tecnico_manutencao_idTecnicoManutencao', 'idTecnicoManutencao');
-    }
+ 
 }

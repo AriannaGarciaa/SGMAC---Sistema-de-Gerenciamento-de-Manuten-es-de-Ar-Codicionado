@@ -42,8 +42,8 @@
         </div>
         
         <div class="mb-3">
-            <label for="local_id" class="block text-gray-700 font-bold mb-2">Local</label>
-            <select name="local_id" id="local_id" class="form-control w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <label for="Local_id" class="block text-gray-700 font-bold mb-2">Local</label>
+            <select name="Local_id" id="Local_id" class="form-control w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 @foreach($local as $local)
                     <option value="{{ $local->id }}">{{ $local->bloco }} - {{ $local->sala }}</option>
                 @endforeach

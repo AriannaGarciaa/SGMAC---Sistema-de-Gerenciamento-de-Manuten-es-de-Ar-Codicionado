@@ -4,7 +4,7 @@
 <div class="container mx-auto py-12">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold">Lista de Equipamentos</h1>
-        <a href="{{ route('equipamentos.create') }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Novo Equipamento</a>
+        <a href="{{ route('equipamentos.create') }}" class="bg-green-500 text-white px-4 py-2 rounded">Novo Equipamento</a>
     </div>
     
     @if (session('success'))
